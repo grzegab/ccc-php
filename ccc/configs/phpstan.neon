@@ -1,0 +1,18 @@
+includes:
+  - phar://phpstan.phar/conf/bleedingEdge.neon
+  - /app/phpstan.neon
+
+parameters:
+  parallel:
+    maximumNumberOfProcesses: 1
+  excludePaths:
+    - tests/tmp/*
+    - tests/*/Example*.php
+    - tests/*/console_application_loader.php
+    - tests/*/data/*
+    - src/Kernel.php
+  paths:
+    - src
+
+  # The level 8 is the highest level
+  level: 8

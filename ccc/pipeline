@@ -1,0 +1,34 @@
+#!/bin/bash
+
+/ccc/scripts/phpunit &&
+exit 0
+
+
+echo 'Running Code Tools' &&
+echo '------------------'
+
+if ! (php-cs-fixer --dry-run --allow-risky=yes --diff --no-interaction --ansi --using-cache=no --config=/ccc/configs/.php-cs-fixer.php fix /opt/atlassian/pipelines/agent/build/src)
+then
+        echo "---------------"
+        echo "CS FIXER failed"
+        echo "---------------"
+        exit 1
+fi
+
+if ! (/ccc/tools/phpstan/vendor/bin/phpstan --memory-limit=512M analyze -c /ccc/configs/phpstan.neon /opt/atlassian/pipelines/agent/build/src)
+then
+        echo "--------------"
+        echo "PHPSTAN failed"
+        echo "--------------"
+        exit 1
+fi
+
+if ! (phpunit -d pcov.enabled=1 -c /ccc/configs/phpunit-pipeline.xml)
+then
+        echo "--------------"
+        echo "PHPUnit failed"
+        echo "--------------"
+        exit 1
+fi
+
+exit 0

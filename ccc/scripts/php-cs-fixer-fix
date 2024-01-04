@@ -1,0 +1,13 @@
+#!/bin/bash
+
+[ ! -f /ccc/configs/.php-cs-fixer.php ] && { echo "Add cs fixer configs!"; exit 2; }
+
+if ! (php-cs-fixer --diff --no-interaction --ansi --using-cache=no --config=/ccc/configs/.php-cs-fixer.php fix /app/src)
+then
+        echo "---------------"
+        echo "CS Fixer failed"
+        echo "---------------"
+        exit 1
+fi
+
+exit 0

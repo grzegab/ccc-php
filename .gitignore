@@ -1,0 +1,6 @@
+.idea/
+
+/ccc/tools/phpstan/vendor/
+/ccc/tools/phpstan/composer.lock
+/ccc/tools/rector/vendor/
+/ccc/tools/rector/composer.lock

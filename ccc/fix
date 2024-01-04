@@ -1,0 +1,6 @@
+#!/bin/bash
+
+/ccc/scripts/php-cs-fixer-fix &&
+/ccc/scripts/rector-src &&
+/ccc/scripts/rector-tests &&
+exit 0

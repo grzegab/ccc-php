@@ -1,0 +1,13 @@
+#!/bin/bash
+
+[ ! -f /ccc/configs/phpunit.xml ] && { echo "Add phpunit configs!"; exit 2; }
+
+if ! (phpunit -d pcov.enabled=1 -c /ccc/configs/phpunit.xml)
+then
+        echo "--------------"
+        echo "PHPUnit failed"
+        echo "--------------"
+        exit 1
+fi
+
+exit 0

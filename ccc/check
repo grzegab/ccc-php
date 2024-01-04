@@ -1,0 +1,6 @@
+#!/bin/bash
+
+/ccc/scripts/phpunit &&
+/ccc/scripts/php-cs-fixer &&
+/ccc/scripts/phpstan &&
+exit 0

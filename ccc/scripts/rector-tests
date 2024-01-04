@@ -1,0 +1,13 @@
+#!/bin/bash
+
+[ ! -f /ccc/configs/rector.php ] && { echo "Add rector configs!"; exit 2; }
+
+if ! (/ccc/tools/rector/vendor/bin/rector process --config=/ccc/configs/rector.php /app/tests)
+then
+        echo "-------------"
+        echo "Rector failed"
+        echo "-------------"
+        exit 1
+fi
+
+exit 0
