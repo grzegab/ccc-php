@@ -1,0 +1,4 @@
+#!/bin/bash
+
+/ccc/scripts/e2e-tests &&
+exit 0

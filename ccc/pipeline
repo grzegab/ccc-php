@@ -7,7 +7,7 @@ exit 0
 echo 'Running Code Tools' &&
 echo '------------------'
 
-if ! (php-cs-fixer --dry-run --allow-risky=yes --diff --no-interaction --ansi --using-cache=no --config=/ccc/configs/.php-cs-fixer.php fix /opt/atlassian/pipelines/agent/build/src)
+if ! (php-cs-fixer --dry-run --allow-risky=yes --diff --no-interaction --ansi --using-cache=no --config=/ccc/configs/.php-cs-fixer.pipeline.php fix /opt/atlassian/pipelines/agent/build/src)
 then
         echo "---------------"
         echo "CS FIXER failed"
