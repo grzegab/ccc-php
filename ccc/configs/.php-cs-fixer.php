@@ -1,6 +1,7 @@
 <?php
 
 if (!file_exists('/app/data/src')) {
+    echo "No file in /app/data/src";
     exit(0);
 }
 
@@ -16,6 +17,8 @@ return (new PhpCsFixer\Config())
         '@PhpCsFixer:risky' => true,
         '@Symfony' => true,
         '@Symfony:risky' => true,
+        'declare_strict_types' => true,
+        'array_syntax' => ['syntax' => 'short'],
         'protected_to_private' => false,
         'nullable_type_declaration_for_default_null_value' => ['use_nullable_type_declaration' => false],
         'fully_qualified_strict_types' => true,
