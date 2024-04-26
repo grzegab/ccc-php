@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM php:8.3-apache
+FROM php:8.3-cli
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV PHP_MEMORY_LIMIT=512M
@@ -102,3 +102,8 @@ RUN echo '[*] Prepare executable files' \
 RUN echo '[*] Prepare E2E tests executable' \
     && chmod +x /ccc/tools/ccc-e2e/e2e \
     && cp /ccc/tools/ccc-e2e/e2e /usr/local/bin/e2e
+
+RUN echo '[*] Install GO LANG' \
+    && rm -rf /usr/local/go  \
+    && tar -C /usr/local -xzf go1.22.2.linux-amd64.tar.gz \
+    && export PATH=$PATH:/usr/local/go/bin
